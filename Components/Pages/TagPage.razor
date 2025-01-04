@@ -1,0 +1,32 @@
+﻿@page "/tag"
+
+
+<div class="form-tag">
+    <form class="text-center" @onsubmit="HandleRegister">
+        <h1 class="h3 mb-3 fw-normal">Add Tag</h1>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" @bind="Tags.TagName" placeholder="Tag Name" />
+            <label for="floatingInput">Tag Name</label>
+        </div>
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <div class="alert alert-danger">@ErrorMessage</div>
+        }
+
+        <button type="submit" class="btn btn-lg btn-primary">
+            Add Tag
+        </button>
+    </form>
+
+    <h2 class="mt-5">Existing Tags</h2>
+    <ul>
+        @foreach (var tag in tags)
+        {
+            <li>@tag.TagID</li>
+            <li>@tag.TagName</li>
+            <button @onclick="() => HandleDelete(tag.TagID)">Delete</button>
+        }
+    </ul>
+</div>

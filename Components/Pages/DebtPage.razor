@@ -1,0 +1,47 @@
+﻿@page "/debt"
+
+
+<div class="form-debt">
+    <form class="text-center" @onsubmit="HandleRegister">
+        <h1 class="h3 mb-3 fw-normal">Add Debt</h1>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" @bind="Debts.DebtName" placeholder="Debt Name" />
+            <label for="floatingInput">Debt Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" @bind="Debts.DebtAmount" placeholder="Debt Amount" />
+            <label for="floatingInput">Debt Amount</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="date" class="form-control" @bind="Debts.DebtDate" placeholder="Debt Date" />
+            <label for="floatingInput">Debt Date</label>
+        </div>
+
+
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+                <div class="alert alert-danger">@ErrorMessage</div>
+        }
+
+        <button type="submit" class="btn btn-lg btn-primary">
+            Add Debt
+        </button>
+    </form>
+
+    <h2 class="mt-5">Existing Debts</h2>
+    <ul>
+        @foreach (var debt in debts)
+        {
+                <li>@debt.DebtID</li>
+                <li>@debt.DebtName</li>
+                <li>@debt.DebtStatus</li>
+                <li>@debt.DebtAmount</li>
+                <li>@debt.DebtDate</li>
+                <button @onclick="() => HandleDelete(debt.DebtID)">Delete</button>
+        }
+    </ul>
+</div>

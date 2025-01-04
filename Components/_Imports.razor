@@ -7,3 +7,10 @@
 @using Microsoft.JSInterop
 @using Coursework
 @using Coursework.Components
+@using Coursework.Service.Interface
+@using Coursework.Service
+
+@inject IUserService UserService
+@inject ITagService TagService
+@inject NavigationManager Nav
+@inject IDebtService DebtService

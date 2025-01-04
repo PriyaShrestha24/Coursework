@@ -58,10 +58,17 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="ChartJs.Blazor" Version="1.1.0" />
+        <PackageReference Include="ClosedXML" Version="0.104.2" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+        <PackageReference Include="Syncfusion.Maui.DataGrid" Version="28.1.33" />
     </ItemGroup>
+
+ 
 
 </Project>

@@ -1,0 +1,51 @@
+﻿@page "/login"
+@using Coursework.Service.Interface
+@inject NavigationManager Nav
+@inject IUserService UserService
+
+<div class="form-login">
+    <!-- Logo Section -->
+    <div class="logo-container text-center mb-4">
+        @* <img class="mb-4" src="/appicon.png" alt="App Logo" height="72"> *@
+        <h1 class="h3 mb-3 fw-normal">Login Here</h1>
+    </div>
+
+    <!-- Login Form -->
+    <form @onsubmit="HandleLogin" class="login-form">
+        <!-- Username Input -->
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" @bind="Users.UserName" placeholder="Username" />
+            <label for="floatingInput">Username</label>
+        </div>
+
+        <!-- Password Input -->
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" @bind="Users.Password" placeholder="Password" />
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <!-- Error Message -->
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <div class="alert alert-danger">
+                @ErrorMessage
+            </div>
+        }
+
+        <!-- Submit Button -->
+        <button class="btn btn-lg btn-primary w-100">Login</button>
+    </form>
+
+    <!-- Existing Users Section -->
+    <h2 class="mt-5">Existing Users</h2>
+    <ul class="user-list">
+        @foreach (var user in users)
+        {
+            <li>
+                <span>@user.UserId</span>
+                <span>@user.UserName</span>
+                <button @onclick="() => HandleDelete(user.UserId)" class="btn btn-sm btn-danger">Delete</button>
+            </li>
+        }
+    </ul>
+</div>
